@@ -19,7 +19,7 @@ export const sendRegistrationEmail = async (email, name) => {
                 email: email,
             },
         ],
-        htmlContent:`Hello ${name}, your registration was successful!`
+        htmlContent: `Hello ${name}, your registration was successful!`
     });
 
     return result;
@@ -38,7 +38,11 @@ export const sendForgetMail = async (email, token) => {
                     email: process.env.brevo_sender_email
                 },
 
-                to: [{ email }],
+                to: [
+                    {
+                        email: email,
+                    },
+                ],
 
                 subject: "Password Reset",
 
