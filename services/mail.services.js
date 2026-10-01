@@ -27,7 +27,7 @@ export const sendRegistrationEmail = async (email, name) => {
 
 export const sendForgetMail = async (email, token) => {
 
-    const reset = `http://localhost:5173/reset-password/${token}`;
+    const reset = `https://generate-short-urls.netlify.app/reset-password/${token}`;
 
     try {
         await brevo.transactionalEmails.sendTransacEmail({
