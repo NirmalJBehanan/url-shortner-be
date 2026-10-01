@@ -32,7 +32,7 @@ export const sendForgetMail = async (email, token) => {
     try {
         const response =
             await brevo.transactionalEmails.sendTransacEmail({
-
+                subject: "Password Reset",
                 sender: {
                     name: process.env.brevo_sender_name,
                     email: process.env.brevo_sender_email
@@ -43,9 +43,6 @@ export const sendForgetMail = async (email, token) => {
                         email: email,
                     },
                 ],
-
-                subject: "Password Reset",
-
                 htmlContent: `
                     <h2>Password Reset</h2>
                     <p>Click the link below to change your password:</p>
