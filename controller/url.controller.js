@@ -30,11 +30,13 @@ export const createUser = async (req, res) => {
             data: "user registered successfully"
         })
     } catch (error) {
-        console.log(error)
-        res.status(409).json({
+        console.log("REGISTER ERROR:", error);
+
+        return res.status(500).json({
             status: false,
-            data: "something went wrong"
-        })
+            data: "Something went wrong",
+            error: error.message
+        });
     }
 }
 
@@ -104,7 +106,7 @@ export const createUrl = async (req, res) => {
             userId: user._id
         }
     )
-    const shortUrl =`http://localhost:${process.env.PORT}/api/short/${response.shortCode}`
+    const shortUrl = `http://localhost:${process.env.PORT}/api/short/${response.shortCode}`
 
     res.status(200).json({
         status: "success",
