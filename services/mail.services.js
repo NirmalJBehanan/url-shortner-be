@@ -30,7 +30,7 @@ export const sendForgetMail = async (email, token) => {
     const reset = `https://generate-short-urls.netlify.app/reset-password/${token}`;
 
     try {
-        await brevo.transactionalEmails.sendTransacEmail({
+        const response = await brevo.transactionalEmails.sendTransacEmail({
 
             sender: {
                 name: process.env.brevo_sender_name,
@@ -48,9 +48,11 @@ export const sendForgetMail = async (email, token) => {
             `
         });
 
-        console.log("email successfully sent");
+        console.log("Email successfully sent");
+        return response;
 
     } catch (error) {
-        console.log(error.body || error);
+        console.log("BREVO ERROR:", error.body || error);
+        throw error; // IMPORTANT
     }
 };
