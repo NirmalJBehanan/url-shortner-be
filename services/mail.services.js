@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const brevo = new BrevoClient({
-    apiKey: process.env.BREVO_API_KEY,
+    apiKey: process.env.brevo_api_key,
 });
 
 export const sendRegistrationEmail = async (email, name) => {
