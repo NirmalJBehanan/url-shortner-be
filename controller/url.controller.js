@@ -106,7 +106,7 @@ export const createUrl = async (req, res) => {
             userId: user._id
         }
     )
-    const shortUrl = `https://generate-short-urls.netlify.app/api/short/${response.shortCode}`
+    const shortUrl = `https://url-shortner-be-recj.onrender.com/api/short/${response.shortCode}`
 
     res.status(200).json({
         status: "success",
